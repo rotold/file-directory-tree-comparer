@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<GridPane alignment="CENTER" hgap="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" vgap="10.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.filetreecomparer.Controller">
+  <children>
+    <TabPane fx:id="debugTabPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="682.0" prefWidth="717.0" tabClosingPolicy="UNAVAILABLE" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
+      <tabs>
+        <Tab text="Directory Options">
+          <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+              <children>
+                <GridPane fx:id="pathApane" alignment="CENTER" layoutX="75.0" layoutY="123.0" prefHeight="318.0" prefWidth="358.0">
+                  <children>
+                    <Button fx:id="pathAButton" mnemonicParsing="false" onAction="#loadPathA" text="Choose 1st Path" wrapText="true" GridPane.rowIndex="1" />
+                    <Label fx:id="pathALabel" text="Please Choose 1st path" textFill="RED" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                    <Button fx:id="pathBButton" mnemonicParsing="false" onAction="#loadPathB" text="Choose 2nd Path" wrapText="true" GridPane.rowIndex="3" />
+                    <Label fx:id="pathBLabel" text="Please Choose 2nd Path" textFill="RED" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                    <Label text="Nickname for 1st Path:" GridPane.rowIndex="2" />
+                    <TextField fx:id="pathANick" onAction="#setPathANick" text="pathA" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                    <Label text="Nickname for 2nd Path" GridPane.rowIndex="4" />
+                    <TextField fx:id="pathBNick" onAction="#setPathBNick" text="pathB" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                    <Label text="Include subfolders ?" GridPane.rowIndex="5" />
+                    <CheckBox fx:id="subfoldersCheck" mnemonicParsing="false" onAction="#setSubfoldersChoice" selected="true" text="Tick to include subfolders" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                    <Label prefHeight="67.0" prefWidth="179.0" text="File and Directory with same name possible?" wrapText="true" GridPane.rowIndex="7" />
+                    <CheckBox fx:id="sameNameCheck" mnemonicParsing="false" onAction="#setSameNameChoice" text="Tick if possible" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                              <Label text="Include system files?" GridPane.rowIndex="6" />
+                              <CheckBox fx:id="sysFilesCheck" mnemonicParsing="false" onAction="#setSysFilesChoice" text="Tick to include system files" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                  </children>
+                  <columnConstraints>
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  </columnConstraints>
+                  <rowConstraints>
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  </rowConstraints>
+                </GridPane>
+                <TextField fx:id="analNameField" alignment="CENTER" layoutX="180.0" layoutY="67.0" onAction="#setAnalName" text="Anal1" />
+                <Label layoutX="214.0" layoutY="33.0" text="Analysis Name:" />
+              </children>
+            </AnchorPane>
+          </content>
+        </Tab>
+        <Tab text="Report Options">
+          <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+              <children>
+                <GridPane layoutX="64.0" layoutY="67.0" prefHeight="157.0" prefWidth="365.0">
+                  <children>
+                    <CheckBox fx:id="choiceBit1box" mnemonicParsing="false" onAction="#setChoiceFlag" selected="true" text="Show Differences" />
+                    <CheckBox fx:id="choiceBit2box" mnemonicParsing="false" onAction="#setChoiceFlag" text="Show items with no detected differences" GridPane.rowIndex="1" />
+                    <CheckBox fx:id="choiceBit3box" mnemonicParsing="false" onAction="#setChoiceFlag" selected="true" text="Show directories" GridPane.rowIndex="2" />
+                    <CheckBox fx:id="choiceBit4box" mnemonicParsing="false" onAction="#setChoiceFlag" selected="true" text="Show Files" GridPane.rowIndex="3" />
+                  </children>
+                  <columnConstraints>
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  </columnConstraints>
+                  <rowConstraints>
+                    <RowConstraints maxHeight="38.0" minHeight="22.0" prefHeight="38.0" />
+                    <RowConstraints maxHeight="42.0" minHeight="10.0" prefHeight="26.0" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  </rowConstraints>
+                </GridPane>
+                        <Button fx:id="startButton" layoutX="195.0" layoutY="256.0" mnemonicParsing="false" onAction="#start" text="Start" />
+                        <ProgressBar fx:id="populateProgress" layoutX="259.0" layoutY="390.0" prefWidth="200.0" progress="0.0" />
+                        <Label layoutX="97.0" layoutY="391.0" prefHeight="16.0" prefWidth="145.0" text="Reading of files" />
+                        <ProgressBar fx:id="sortProgress" layoutX="259.0" layoutY="424.0" prefWidth="200.0" progress="0.0" />
+                        <Label layoutX="97.0" layoutY="425.0" prefHeight="17.0" prefWidth="140.0" text="Analysis of Files Step 1" />
+                        <ProgressBar fx:id="dispoProgress" layoutX="259.0" layoutY="458.0" prefWidth="200.0" progress="0.0" />
+                        <Label fx:id="initLabel" layoutX="259.0" layoutY="338.0" prefHeight="17.0" prefWidth="224.0" text="Please enter directory options" />
+                        <Label layoutX="97.0" layoutY="459.0" text="Analysis of Files Step 2" />
+                        <Button fx:id="cancelButton" layoutX="333.0" layoutY="256.0" mnemonicParsing="false" onAction="#cancel" text="Cancel" />
+              </children>
+            </AnchorPane>
+          </content>
+        </Tab>
+        <Tab text="Report">
+          <content>
+            <AnchorPane id="Content" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <GridPane layoutX="15.0" layoutY="5.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="614.0" prefWidth="697.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                              <RowConstraints maxHeight="79.0" minHeight="10.0" prefHeight="69.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="142.0" minHeight="0.0" prefHeight="52.0" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="441.0" minHeight="10.0" prefHeight="389.0" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="100.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Button fx:id="mkReportButton" mnemonicParsing="false" onAction="#makeReport" prefHeight="25.0" prefWidth="203.0" text="Generate Report" GridPane.rowIndex="4" />
+                              <ScrollPane prefHeight="100.0" prefViewportHeight="100.0" prefViewportWidth="100.0" prefWidth="100.0" GridPane.rowIndex="3">
+                                <content>
+                                  <AnchorPane fx:id="extraAinfo" prefHeight="100.0" prefWidth="100.0">
+                                       <children>
+                                          <TextFlow fx:id="aInfoTxtFlow" prefHeight="50.0" prefWidth="580.0" />
+                                       </children></AnchorPane>
+                                </content>
+                              </ScrollPane>
+                              <ScrollPane fx:id="aInfo" prefHeight="100.0" prefViewportHeight="100.0" prefViewportWidth="100.0" prefWidth="100.0" GridPane.rowIndex="2">
+                                <content>
+                                  <AnchorPane prefHeight="100.0" prefWidth="100.0">
+                                       <children>
+                                          <TextFlow fx:id="aTxtFlow" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="438.0" prefWidth="580.0" />
+                                       </children></AnchorPane>
+                                </content>
+                              </ScrollPane>
+                              <ScrollPane fx:id="extraBinfo" prefHeight="100.0" prefViewportHeight="1000.0" prefViewportWidth="100.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                <content>
+                                  <AnchorPane prefHeight="100.0" prefWidth="100.0">
+                                       <children>
+                                          <TextFlow fx:id="bInfoTxtFlow" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="40.0" prefWidth="580.0" />
+                                       </children></AnchorPane>
+                                </content>
+                              </ScrollPane>
+                              <ScrollPane fx:id="bInfo" prefHeight="100.0" prefViewportHeight="100.0" prefViewportWidth="100.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                <content>
+                                  <AnchorPane prefHeight="100.0" prefWidth="100.0">
+                                       <children>
+                                          <TextFlow fx:id="bTxtFlow" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="438.0" prefWidth="580.0" />
+                                       </children></AnchorPane>
+                                </content>
+                              </ScrollPane>
+                              <Label fx:id="aNameLabel" contentDisplay="CENTER" prefHeight="17.0" prefWidth="203.0" text="pathA" textAlignment="CENTER" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
+                              <Label fx:id="bNameLabel" prefHeight="17.0" prefWidth="205.0" text="pathB" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
+                              <Label prefHeight="17.0" prefWidth="89.0" text="Analysis Name" GridPane.halignment="LEFT" GridPane.valignment="TOP" />
+                              <Label fx:id="AnalNameLabel" prefHeight="0.0" prefWidth="269.0" GridPane.halignment="RIGHT" GridPane.valignment="TOP">
+                                 <GridPane.margin>
+                                    <Insets />
+                                 </GridPane.margin></Label>
+                              <Label text="Analysis start Time" />
+                              <Label fx:id="AnalStartTimeLabel" prefHeight="17.0" prefWidth="247.0" GridPane.halignment="RIGHT" />
+                              <Label text="Analysis end time" GridPane.columnIndex="1" />
+                              <Label fx:id="AnalEndTimeLabel" prefHeight="17.0" prefWidth="252.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" />
+                              <Label prefHeight="17.0" prefWidth="149.0" text="Time elapsed for analysis" GridPane.halignment="RIGHT" GridPane.valignment="BOTTOM" />
+                              <Label fx:id="AnalElapsedTimeLabel" prefHeight="17.0" prefWidth="343.0" GridPane.columnIndex="1" GridPane.valignment="BOTTOM" />
+                           </children>
+                        </GridPane>
+                     </children></AnchorPane>
+          </content>
+        </Tab>
+      </tabs>
+    </TabPane>
+  </children>
+  <columnConstraints>
+    <ColumnConstraints />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints />
+  </rowConstraints>
+</GridPane>
